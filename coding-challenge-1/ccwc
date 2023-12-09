@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import argparse
+
+def count_bytes(filename):
+    try:
+        with open(filename , 'rb') as file:
+            byte_count = len(file.read())
+            print(f"The number of bytes in {filename} is : {byte_count} bytes")
+    except FileNotFoundError:
+        print(f"File {filename} not found.")
+    except Exception as e:
+        print(f"An error occured : {e}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Count bytes in a file.")
+    parser.add_argument('-c' , '--count' , dest='filename' , required=True , help="Specify the filename")
+
+    args = parser.parse_args();
+    count_bytes(args.filename)
+
+if __name__ == "__main__":
+    main()
