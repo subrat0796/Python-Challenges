@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+
+def validate_json(filename):
+    try:
+        with open(filename , 'r') as file:
+            json_data = json.loads(file.read())
+        print(f"{filename} is a valid JSON and the json is {json_data}")
+    except json.JSONDecodeError:
+        print(f"{filename} is invalid JSON")
+
+def main():
+    parser = argparse.ArgumentParser(description="Check for valid json files")
+    parser.add_argument('-c' , '--check' ,dest="filename" , required=True , help="Specify the filename")
+
+    args = parser.parse_args()
+    validate_json(args.filename)
+
+if __name__ == "__main__":
+    main()
