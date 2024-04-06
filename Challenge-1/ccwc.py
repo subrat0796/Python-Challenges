@@ -72,6 +72,8 @@ def main():
             if operation:
                 operation(filename)
             break
+    
+    
 
 if __name__ == '__main__':
     main()
